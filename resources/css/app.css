@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+@source '../js/**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: Georgia, 'Playfair Display', 'Times New Roman', serif;
+
+    --color-miora-cream: #FAF7F2;
+    --color-miora-ivory: #FFFDF9;
+    --color-miora-sand: #F2ECE4;
+    --color-miora-oat: #E6DDD2;
+    --color-miora-blush: #F2B8C6;
+    --color-miora-blush-soft: #FCEEF2;
+    --color-miora-rose: #D4748D;
+    --color-miora-blue: #A7C7E7;
+    --color-miora-blue-soft: #EDF4FC;
+    --color-miora-sky: #5E92C4;
+    --color-miora-brown: #8C6D58;
+    --color-miora-brown-dark: #6E5443;
+    --color-miora-taupe: #D8C8BC;
+    --color-miora-charcoal: #2B2625;
+    --color-miora-muted: #695F5B;
+}
+
+@layer base {
+    html {
+        font-size: 80%;
+        scroll-behavior: smooth;
+        background-color: var(--color-miora-cream);
+        color: var(--color-miora-charcoal);
+    }
+
+    body {
+        background-color: var(--color-miora-cream);
+        color: var(--color-miora-charcoal);
+        font-family: var(--font-sans);
+        overflow-x: hidden;
+    }
+}
+
+/* Custom Range Input Styling for Intensity & Adjustments */
+input[type='range'].miora-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 0.375rem;
+    border-radius: 9999px;
+    background: #E6DDD2;
+    outline: none;
+}
+
+input[type='range'].miora-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 9999px;
+    background: #8C6D58;
+    border: 2px solid #FFFDF9;
+    box-shadow: 0 2px 6px rgba(43, 38, 37, 0.2);
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type='range'].miora-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.12);
+    background: #6E5443;
+}
+
+/* Subtle custom scrollbars for horizontal filter and frame strips */
+.miora-scroll::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+.miora-scroll::-webkit-scrollbar-track {
+    background: #F2ECE4;
+    border-radius: 9999px;
+}
+
+.miora-scroll::-webkit-scrollbar-thumb {
+    background: #D8C8BC;
+    border-radius: 9999px;
+}
+
+.miora-scroll::-webkit-scrollbar-thumb:hover {
+    background: #8C6D58;
+}
+
+/* Camera flash animation */
+@keyframes mioraFlash {
+    0% {
+        opacity: 0.95;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.animate-shutter-flash {
+    animation: mioraFlash 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Floating hero photostrips */
+@keyframes mioraFloatSlow {
+    0%, 100% {
+        transform: translateY(0px) rotate(-3deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(-2deg);
+    }
+}
+
+@keyframes mioraFloatReverse {
+    0%, 100% {
+        transform: translateY(0px) rotate(4deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+.miora-float-left {
+    animation: mioraFloatSlow 6s ease-in-out infinite;
+}
+
+.miora-float-right {
+    animation: mioraFloatReverse 7s ease-in-out infinite;
+}
